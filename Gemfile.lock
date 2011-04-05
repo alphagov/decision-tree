@@ -1,8 +1,10 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.0.5)
     diff-lcs (1.1.2)
     git (1.2.5)
+    i18n (0.5.0)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
@@ -22,7 +24,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 3.0.3)
   bundler (~> 1.0.0)
+  i18n
   jeweler (~> 1.5.2)
   rcov
   rspec (~> 2.4.0)

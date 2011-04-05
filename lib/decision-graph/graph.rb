@@ -1,6 +1,7 @@
 module DecisionGraph
   class Graph
     attr_reader :name, :current_node
+    attr_accessor :display_name
 
     def initialize(name)
       @name = name

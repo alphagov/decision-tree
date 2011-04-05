@@ -7,8 +7,12 @@ module DecisionGraph
       @answers = {}
     end
 
-    def answer hash
-      hash.each_pair {|answer, next_node| @answers[answer] = next_node}
+    def answer main_arg, options = {}
+      if main_arg.is_a? Hash
+        main_arg.each_pair {|answer, next_node| @answers[answer] = next_node}
+      else
+
+      end
     end
   end
 end

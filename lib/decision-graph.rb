@@ -2,7 +2,6 @@
 
 require 'decision-graph/node'
 require 'decision-graph/graph'
-require 'decision-graph/edge'
 require 'decision-graph/question'
 require 'decision-graph/outcome'
 require 'decision-graph/builder'

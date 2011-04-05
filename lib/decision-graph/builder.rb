@@ -8,6 +8,10 @@ module DecisionGraph
       @graph
     end
 
+    def display_name(text)
+      @graph.display_name = text
+    end
+
     def question(name, options = {}, &block)
       question = Question.new(name, options)
       @graph[name] = question

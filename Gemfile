@@ -1,5 +1,8 @@
 source "http://rubygems.org"
 
+gem "activesupport", "~> 3.0.3"
+gem "i18n"
+
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
