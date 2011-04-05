@@ -1,4 +1,4 @@
-module DecisionGraph
+module DecisionTree
   class Question < Node
     attr_reader :answers
 

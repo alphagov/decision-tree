@@ -1,5 +1,5 @@
-module DecisionGraph
-  class Graph
+module DecisionTree
+  class Tree
     attr_reader :name, :current_node
     attr_accessor :display_name
 

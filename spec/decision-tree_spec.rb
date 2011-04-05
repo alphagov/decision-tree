@@ -1,7 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'decision-tree'
 
-describe DecisionGraph::Graph do
-  describe "A DSL to create a graph" do
+describe DecisionTree::Tree do
+  describe "A DSL to create a tree" do
     # Note: not the real or even vaguely accurate graph, just a subset for testing
     subject do
       decision_graph :should_i_register_for_vat? do
@@ -18,6 +19,8 @@ describe DecisionGraph::Graph do
           answer :no => :you_should_register_as_a_non_established_taxable_person
         end
 
+        # Example of a copy-only question - makes no difference to the outcome but adds some
+        # advisory blurbs if anything checked
         question :does_your_business_operate_in_any_of_these_sectors? => :what_is_your_turnover? do
           answer "Agriculture, horticulture or fisheries"
           answer :barristers_and_advocates, :accretes => :barrister_advice
@@ -49,7 +52,7 @@ describe DecisionGraph::Graph do
 
       describe "The first question" do
         let(:first_question) { subject.start_node }
-        specify { first_question.should be_a(DecisionGraph::Question) }
+        specify { first_question.should be_a(DecisionTree::Question) }
         specify { first_question.should have(2).answers }
         specify { first_question.answers.should include(:no) }
         specify { first_question.answers[:no].should == :you_cannot_register_for_vat }
@@ -57,7 +60,7 @@ describe DecisionGraph::Graph do
         specify { first_question.display_name.should == "Are you in business?" }
       end
 
-      specify { subject[:you_must_register_for_vat].should be_a(DecisionGraph::Outcome) }
+      specify { subject[:you_must_register_for_vat].should be_a(DecisionTree::Outcome) }
       specify { subject[:you_can_register_for_vat].explanatory.should == "It's possible" }
       specify { subject[:are_you_based_in_the_uk?].explanatory.should == "England, Scotland, Wales, NI" }
 

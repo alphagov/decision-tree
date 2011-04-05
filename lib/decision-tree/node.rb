@@ -1,6 +1,6 @@
 require 'active_support/inflector'
 
-module DecisionGraph
+module DecisionTree
   class Node
     attr_reader :name
     def initialize(name, options = {})

@@ -1,4 +1,4 @@
-module DecisionGraph
+module DecisionTree
   class Outcome < Node
   end
 end

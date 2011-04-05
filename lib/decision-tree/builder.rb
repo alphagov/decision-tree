@@ -1,7 +1,7 @@
-module DecisionGraph
+module DecisionTree
   class Builder
     def initialize(name)
-      @graph = Graph.new(name)
+      @graph = Tree.new(name)
     end
 
     def build
