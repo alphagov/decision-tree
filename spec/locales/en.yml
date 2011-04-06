@@ -1,0 +1,6 @@
+# Here to pick up copy strings
+en:
+  barrister_advice: "Advice for barristers"
+  are_you_based_in_the_uk:
+      display_name: "Are you based in the United Kingdom?"
+      explanatory: "England, Scotland, Wales, NI"
