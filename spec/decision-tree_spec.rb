@@ -2,7 +2,23 @@ require 'spec_helper'
 require 'decision-tree'
 
 describe DecisionTree::Tree do
-  describe "A DSL to create a tree" do
+  describe "A few edge cases" do
+    subject do
+      decision_tree :just_testing do
+
+      end
+    end
+
+    it "should look up display name from i18n" do
+      subject.display_name.should == 'Just testing from i18n'
+    end
+
+    it "should look up explanatory from i18n" do
+      subject.explanatory.should == 'Just testing explanatory from i18n'
+    end
+  end
+
+  describe "A largeish example" do
     # Note: not the real or even vaguely accurate graph, just a subset for testing
     subject do
       decision_tree :should_i_register_for_vat? do

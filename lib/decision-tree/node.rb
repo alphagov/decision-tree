@@ -9,7 +9,8 @@ module DecisionTree
     end
 
     def set_copy
-      key_base = @name.to_s[0..-2]
+      name_str = @name.to_s
+      key_base = name_str[-1] == '?' ? name_str[0..-2] : name_str
       @display_name = I18n.t(key_base + '.display_name', :default => ActiveSupport::Inflector.humanize(@name))
       @explanatory = I18n.t(key_base + '.explanatory', :default => nil)
     end

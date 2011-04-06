@@ -12,6 +12,9 @@ module DecisionTree
     def answer name, options = {}
       # All answers point to the fixed next question
       @answers[name] = @next_question
+      # What to do with :advisory_copy?
+      advisory_copy_sym = options.delete(:advisory_copy)
+
     end
   end
 end

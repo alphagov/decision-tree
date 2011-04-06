@@ -11,7 +11,11 @@ module DecisionTree
     end
 
     def display_name(text)
-      @tree.display_name = text
+      @tree.display_name text
+    end
+
+    def explanatory(text)
+      @tree.explanatory text
     end
 
     def question(name_or_hash, options = {}, &block)

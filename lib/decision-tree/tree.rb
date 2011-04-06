@@ -2,15 +2,13 @@ module DecisionTree
   ##
   # A decision tree which can manage its own current state based on
   # answers it is given
-  class Tree
-    attr_reader :name, :current_node
-    attr_accessor :display_name
+  class Tree < Node
+    attr_reader :current_node
 
-    def initialize(name)
-      @name = name
+    def initialize(name, options = {})
+      super(name, options)
       @nodes = {}
-      @start_node = nil
-      @current_node = nil
+      @start_node = @current_node = nil
     end
 
     def start_node

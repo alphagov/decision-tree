@@ -4,3 +4,7 @@ en:
   are_you_based_in_the_uk:
       display_name: "Are you based in the United Kingdom?"
       explanatory: "England, Scotland, Wales, NI"
+
+  just_testing:
+    display_name: "Just testing from i18n"
+    explanatory: "Just testing explanatory from i18n"
