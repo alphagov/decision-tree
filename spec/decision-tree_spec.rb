@@ -133,6 +133,11 @@ describe DecisionTree::Tree do
         subject.provide_answer(:no)
         subject.current_node.name.should == :you_cannot_register_for_vat
       end
+
+      it "should move to the next node when answers are given as strings" do
+        subject.provide_answer('No')
+        subject.current_node.name.should == :you_cannot_register_for_vat
+      end
     end
   end
 end

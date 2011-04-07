@@ -25,14 +25,15 @@ module DecisionTree
       @nodes[name] = value
     end
 
-    def set_state(sym)
-      @current_node = self[sym]
+    def set_state(name)
+      @current_node = self[name]
     end
 
     ##
     # Move on to another (valid) node
-    def provide_answer name
-      next_node = self[current_node.answers[name]]
+    def provide_answer(name)
+      name = name.gsub('-', '_').downcase if name.is_a?(String)
+      next_node = self[current_node.answers[name.to_sym]]
       raise ArgumentError, "No answer with name #{name} from #{current_node.name}" if next_node.nil?
       @current_node = next_node
     end

@@ -13,10 +13,10 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "decision-tree"
-  gem.homepage = "http://github.com/rgarner/decision-tree"
+  gem.homepage = "http://github.com/alphagov/decision-tree"
   gem.license = "MIT"
   gem.summary = %Q{Create and traverse decision trees}
-  gem.description = %Q{longer description of your gem}
+  gem.description = %Q{}
   gem.email = "rgarner@zephyros-systems.co.uk"
   gem.authors = ["Russell Garner"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
