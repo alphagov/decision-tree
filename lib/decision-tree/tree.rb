@@ -25,6 +25,10 @@ module DecisionTree
       @nodes[name] = value
     end
 
+    def set_state(sym)
+      @current_node = self[sym]
+    end
+
     ##
     # Move on to another (valid) node
     def provide_answer name

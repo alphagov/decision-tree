@@ -71,6 +71,8 @@ describe DecisionTree::Tree do
 
       describe "The first question" do
         let(:first_question) { subject.start_node }
+        specify { subject.current_node.should == first_question }
+
         specify { first_question.should be_a(DecisionTree::Question) }
         specify { first_question.should have(2).answers }
         specify { first_question.answers.should include(:no) }
@@ -94,11 +96,20 @@ describe DecisionTree::Tree do
         specify { subject['are-you-in-business?'].should be_a(DecisionTree::Question) }
       end
 
+      describe "setting the next state" do
+        it "should work with symbols" do
+          subject.set_state(:what_is_your_turnover?)
+          subject.current_node.name == :what_is_your_turnover?
+        end
+        it "should work with slugs" do
+          subject.set_state('what-is-your-turnover?')
+          subject.current_node.name == :what_is_your_turnover?
+        end
+      end
+
       specify { subject[:you_must_register_for_vat].should be_a(DecisionTree::Outcome) }
       specify { subject[:you_can_register_for_vat].explanatory.should == "It's possible" }
       specify { subject[:are_you_based_in_the_uk?].explanatory.should == "England, Scotland, Wales, NI" }
-
-      specify { subject.current_node.should == subject.start_node }
     end
 
     describe "Copy settings" do
@@ -107,6 +118,7 @@ describe DecisionTree::Tree do
       end
 
       it "should pick up named copy settings from answer ... :advisory_copy => :copy_id" do
+        pending "Fixed next states not yet implemented"
         answer_sym = subject[:does_your_business_operate_in_any_of_these_sectors?].answers[:barristers_and_advocates]
         subject[answer_sym].advisory_copy.should == "Advice for barristers"
       end
