@@ -2,10 +2,9 @@ require 'spec_helper'
 require 'decision-tree'
 
 describe DecisionTree::Tree do
-  describe "A few edge cases" do
+  describe "Looking up copy for the tree" do
     subject do
       decision_tree :just_testing do
-
       end
     end
 
@@ -15,6 +14,10 @@ describe DecisionTree::Tree do
 
     it "should look up explanatory from i18n" do
       subject.explanatory.should == 'Just testing explanatory from i18n'
+    end
+
+    it "should default the explanatory correctly" do
+      decision_tree(:foo){}.explanatory.should be_nil
     end
   end
 
