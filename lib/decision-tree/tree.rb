@@ -16,7 +16,8 @@ module DecisionTree
     end
 
     def [] name
-      @nodes[name]
+      name = name.gsub('-', '_').to_sym if name.is_a?(String)
+      @nodes[name] || @nodes[(name.to_s + '?').to_sym]
     end
 
     def []= name, value

@@ -89,6 +89,11 @@ describe DecisionTree::Tree do
         specify { fixed_state_question.next_question.should == :what_is_your_turnover? }
       end
 
+      describe "Looking up nodes by slugs as well as symbols" do
+        specify { subject['are-you-in-business'].should be_a(DecisionTree::Question) }
+        specify { subject['are-you-in-business?'].should be_a(DecisionTree::Question) }
+      end
+
       specify { subject[:you_must_register_for_vat].should be_a(DecisionTree::Outcome) }
       specify { subject[:you_can_register_for_vat].explanatory.should == "It's possible" }
       specify { subject[:are_you_based_in_the_uk?].explanatory.should == "England, Scotland, Wales, NI" }
