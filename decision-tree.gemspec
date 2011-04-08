@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "decision-tree.gemspec",
+    "jenkins.sh",
     "lib/decision-tree.rb",
     "lib/decision-tree/builder.rb",
     "lib/decision-tree/dot_renderer.rb",
