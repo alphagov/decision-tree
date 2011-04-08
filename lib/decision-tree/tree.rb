@@ -3,7 +3,7 @@ module DecisionTree
   # A decision tree which can manage its own current state based on
   # answers it is given
   class Tree < Node
-    attr_reader :current_node
+    attr_reader :nodes, :current_node
 
     def initialize(name, options = {})
       super(name, options)
