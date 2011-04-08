@@ -64,9 +64,10 @@ describe DecisionTree::Tree do
     end
 
     describe "After creation" do
-      describe "the graph" do
+      describe "the tree" do
         specify { subject.name.should == :should_i_register_for_vat? }
         specify { subject.display_name.should == "Should I register for VAT?" }
+        specify { subject.explanatory.should == "This is a tool" }
       end
 
       describe "The first question" do
