@@ -17,7 +17,7 @@ module DecisionTree
     "[#{values}]"
   end
 
-  def render_dot(tree)
+  def render_dot(tree, options = {})
     template = Erubis::Eruby.new(File.read(File.join(File.dirname(__FILE__), 'templates/digraph.erb')))
     template.result(binding)
   end

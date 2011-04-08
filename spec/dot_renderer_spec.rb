@@ -19,6 +19,11 @@ describe "Rendering a graph" do
       outcome :you_cannot_register_for_vat
       outcome :you_should_register_as_a_non_established_taxable_person do
         display_name "You should register as a non-established taxable person"
+        explanatory <<MULTILINE
+          Explanation as to what
+          a non-established person is goes
+          here
+MULTILINE
       end
     end
   end
@@ -49,13 +54,20 @@ describe "Rendering a graph" do
     rendered.should =~ /.*\[.*shape=record/
   end
 
-  it "renders nodes with explanatories in { two | segments }" do
-    pending "Deal with multi-line markdown"
-    rendered.should =~ /are_you_based_in_the_uk .*label="\{ Are you based.*\| England, Scotland.*\}"/
-  end
-
   it "should connect the boxes with answers (no '?')" do
     rendered.should include('are_you_in_business -> are_you_based_in_the_uk [label="Yes"]')
+  end
+
+  describe "Showing explanatories" do
+    let(:rendered) { DecisionTree.render_dot(tree, :show_explanatory_summary => true) }
+
+    it "renders nodes with explanatories in { two | segments }" do
+      rendered.should =~ /are_you_based_in_the_uk .*label="\{ Are you based.*\| England, Scotland.*\}"/
+    end
+
+    it "renders only the first line of multiline (DOT isn't happy with markdown ;))" do
+      rendered.should include('Explanation as to what ...')
+    end
   end
 
   describe "Attributes" do

@@ -72,6 +72,7 @@ describe DecisionTree::Tree do
       describe "The first question" do
         let(:first_question) { subject.start_node }
         specify { subject.current_node.should == first_question }
+        specify { subject.should be_at_start }
 
         specify { first_question.should be_a(DecisionTree::Question) }
         specify { first_question.should have(2).answers }
@@ -85,10 +86,16 @@ describe DecisionTree::Tree do
       end
 
       describe "Fixed next state questions" do
+        before { subject.set_state(:does_your_business_operate_in_any_of_these_sectors?) }
         let(:fixed_state_question) { subject[:does_your_business_operate_in_any_of_these_sectors?] }
         specify { fixed_state_question.should be_a(DecisionTree::FixedNextStateQuestion) }
         specify { fixed_state_question.type.should == :checkbox }
         specify { fixed_state_question.next_question.should == :what_is_your_turnover? }
+        it "should move to the next fixed node when multiple checks are submitted" do
+          pending 'Not yet implemented'
+          subject.provide_answer [:racehorse_owners, :retail_sector]
+          subject.current_node.should == :thing
+        end
       end
 
       describe "Looking up nodes by slugs as well as symbols" do
