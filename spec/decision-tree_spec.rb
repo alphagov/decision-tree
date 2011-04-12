@@ -26,6 +26,7 @@ describe DecisionTree::Tree do
     subject do
       decision_tree :should_i_register_for_vat? do
         display_name "Should I register for VAT?"
+        tags "vat, taxation"
 
         question :are_you_in_business? do
           answer :no => :you_cannot_register_for_vat
@@ -67,6 +68,7 @@ describe DecisionTree::Tree do
       describe "the graph" do
         specify { subject.name.should == :should_i_register_for_vat? }
         specify { subject.display_name.should == "Should I register for VAT?" }
+        specify { subject.tags.should == "vat, taxation" }
       end
 
       describe "The first question" do

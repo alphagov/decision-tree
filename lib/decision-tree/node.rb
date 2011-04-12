@@ -25,5 +25,10 @@ module DecisionTree
       return @display_name if text.nil?
       @display_name = text
     end
+    
+    def tags text=nil
+      return @tags if text.nil?
+      @tags = text
+    end
   end
 end

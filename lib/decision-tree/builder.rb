@@ -13,6 +13,10 @@ module DecisionTree
     def display_name(text)
       @tree.display_name text
     end
+    
+    def tags(text)
+      @tree.tags text
+    end
 
     def explanatory(text)
       @tree.explanatory text
